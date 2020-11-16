@@ -1,0 +1,34 @@
+{% extends 'layout1.html.twig' %}
+{% block contenido %}
+            <div class="row tm-row tm-mb-45">
+                <div class="col-12">
+                    <hr class="tm-hr-primary tm-mb-55">
+                  
+                </div>                
+            </div>
+            <div class="row tm-row tm-mb-120">
+                <div class="col-12">
+                    <h2 class="tm-color-primary tm-post-title tm-mb-60">Mensaje enviado</h2>
+                </div>
+                <div class="col-lg-7 tm-contact-left"><!-- Formulario -->
+                    <form method="POST" action="/envio" class="mb-5 ml-auto mr-0 tm-contact-form">                        
+                        <div class="form-group row mb-4">
+                            <label for="name" class="col-sm-3 col-form-label text-right tm-color-primary">Nombre:{{name}}</label>
+                      
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label for="email" class="col-sm-3 col-form-label text-right tm-color-primary">Email:{{email}}</label>
+                           
+                        </div>
+                         <div class="form-group row mb-4">
+                            <label for="subject" class="col-sm-3 col-form-label text-right tm-color-primary">Subject:{{subject}}</label>
+                         
+                        </div>
+                        <div class="form-group row mb-5">
+                            <label for="message" class="col-sm-3 col-form-label text-right tm-color-primary">Mensaje:{{message}}</label>
+                      
+                        </div>                     
+                    </form>
+                </div>     
+            </div>      
+{% endblock %}

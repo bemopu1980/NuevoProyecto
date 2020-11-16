@@ -1,0 +1,80 @@
+{% extends 'layout.html.twig' %}
+{% block contenido %}
+	<div class="row tm-row tm-mt-100 tm-mb-75">
+		<div class="tm-prev-next-wrapper"></div>
+		<div class="tm-paging-wrapper">
+			<span class="d-inline-block mr-3">Categoria</span>
+			<nav class="tm-paging-nav d-inline-block">
+				<ul>
+					<li class="tm-paging-item">
+						<a href="{{ path('productos',{ currentCategory : 'categoria1', 'currentPage' : 1 }) }}" class="mb-2 tm-btn tm-paging-link{{ currentCategory == 'categoria1' ? 'visible' : ''}}">C1</a>
+					</li>
+					<li class="tm-paging-item">
+						<a href="{{ path('productos',{ currentCategory : 'categoria2', 'currentPage' : 1 }) }}" class="mb-2 tm-btn tm-paging-link{{ currentCategory == 'categoria2' ? 'visible' : ''}}">C2</a>
+					</li>
+					<li class="tm-paging-item">
+						<a href="{{ path('productos',{ currentCategory : 'categoria3', 'currentPage' : 1 }) }}" class="mb-2 tm-btn tm-paging-link{{ currentCategory == 'categoria3' ? 'visible' : ''}}">C3</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="row tm-row">
+		{% set page = app.request.attributes.get('i') %}
+		{% set limitInf = (currentPage - 1) * imgPorPagina %}
+		{% set limitSup = currentPage * imgPorPagina + 1 %}
+		{% for isses in data %}
+			{% if loop.index > limitInf and loop.index < limitSup %}
+				<article class="col-12 col-md-6 tm-post">
+					<hr class="tm-hr-primary">
+					<a href="post.html" class="effect-lily tm-post-link tm-pt-60">
+						<div class="tm-post-link-inner">
+							<img src="{{asset(isses.getImg(),"img")}}" alt="Image" class="img-fluid">
+						</div>
+						{# <span class="position-absolute tm-new-badge">{{ isses.mensaje }}</span> #}
+						<h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ isses.getTitle() }}</h2>
+					</a>
+					<p class="tm-pt-30">{{ isses.getDescription() }}</p>
+					<div class="d-flex justify-content-between tm-pt-45">
+						<span class="tm-color-primary">{{ isses.getTitle2() }}</span>
+						<span class="tm-color-primary">{{ isses.getDate()|date('M d, Y')}}</span>
+					</div>
+					<hr>
+					<div class="d-flex justify-content-between">
+						<span>{{ isses.getComments() }}</span>
+						<span>{{ isses.getCreateby() }}</span>
+					</div>
+				</article>
+			{% endif %}
+		{% endfor %}
+		{% set ultimaPagina = (((data|length) / imgPorPagina)|round(0 ,'ceil')) %}
+		{% set paginaBlanco = ((((data|length) / imgPorPagina)|round(0 ,'ceil')) * imgPorPagina - (data|length)) %}
+		{% if ultimaPagina == currentPage and paginaBlanco !=0 %}
+			{% for blancoIsess in 1.. ultimaPagina %}
+				<a href="post.html" class="effect-lily tm-post-link tm-pt-60">
+					<div>
+						<img src="{{asset('blanco.jpg','img')}}" alt="Image">
+					</div>
+					<h2 class="tm-pt-30 tm-color-primary tm-post-title">&nbsp;</h2>
+				</a>
+				<p class="tm-pt-30">&nbsp;</p>
+			{% endfor %}
+		{% endif %}
+	</div>
+	{# //paginador #}
+	<div class="row tm-row tm-mt-100 tm-mb-75">
+		<div class="tm-prev-next-wrapper"></div>
+		<div class="tm-paging-wrapper">
+			<span class="d-inline-block mr-3">Page</span>
+			<nav class="tm-paging-nav d-inline-block">
+				<ul>
+					{% for paginador in 1..ultimaPagina %}
+						<li class="tm-paging-item">
+							<a href="{{ path('productos',{ i : page , currentPage : paginador,currentCategory: currentCategory}) }}" class="mb-2 tm-btn tm-paging-link{{ currentPage == paginador ? 'visible' : ''}}">{{ paginador }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</nav>
+		</div>
+	</div>
+{% endblock %}
