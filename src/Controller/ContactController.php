@@ -16,6 +16,14 @@ class ContactController extends AbstractController
     {
         $contacto=new Contacto();
         $form= $this->createForm(ContactoType::class, $contacto);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $contacto->setDate(new \DateTime("now"));
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager ->persist($contacto);
+            $entityManager ->flush();
+        }
         $usuario = $request->request->get('usuario');
         $usuario = $session->get('usuario');
         return $this->render('contact.html.twig', [
