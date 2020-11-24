@@ -15,7 +15,8 @@
                     <h2 class="tm-color-primary tm-post-title tm-mb-60">Contacta</h2>
                 </div>
                 <div class="col-lg-7 tm-contact-left"><!-- Formulario -->
-                    <form method="POST" action="/envio" class="mb-5 ml-auto mr-0 tm-contact-form">                        
+                {{form(form)}}
+                   {#  <form method="POST" action="/envio" class="mb-5 ml-auto mr-0 tm-contact-form">                        
                         <div class="form-group row mb-4">
                             <label for="name" class="col-sm-3 col-form-label text-right tm-color-primary">Nombre</label>
                             <div class="col-sm-9">
@@ -45,7 +46,7 @@
                                 <button class="tm-btn tm-btn-primary tm-btn-small">Enviar</button>                        
                             </div>                            
                         </div>                                
-                    </form>
+                    </form> #}
                 </div>
                 <div class="col-lg-5 tm-contact-right">
                     <address class="mb-4 tm-color-gray">
