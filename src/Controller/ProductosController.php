@@ -22,6 +22,7 @@ class ProductosController extends AbstractController
     {
         return $this->render('productos/index.html.twig', [
             'productos' => $productosRepository->findAll(),
+            'usuario'=> 'admin',
             
         ]);
     }
@@ -46,6 +47,7 @@ class ProductosController extends AbstractController
         return $this->render('productos/new.html.twig', [
             'producto' => $producto,
             'form' => $form->createView(),
+            'usuario'=> 'admin',
             
         ]);
     }
@@ -57,6 +59,7 @@ class ProductosController extends AbstractController
     {
         return $this->render('productos/show.html.twig', [
             'producto' => $producto,
+            'usuario'=> 'admin',
             
         ]);
     }
@@ -78,6 +81,7 @@ class ProductosController extends AbstractController
         return $this->render('productos/edit.html.twig', [
             'producto' => $producto,
             'form' => $form->createView(),
+            'usuario'=> 'admin',
             
         ]);
     }

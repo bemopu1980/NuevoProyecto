@@ -1,4 +1,8 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{# {{ form_widget(form) }} #}
+<div class="col-sm-9">
+	{{ form_widget(form.categoria, {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div>
+
+<button class='tm-btn tm-btn-primary tm-btn-small'>{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

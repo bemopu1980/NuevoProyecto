@@ -258,11 +258,11 @@ ul {
 .tm-btn-primary {    
     background-color: #0CC;
     color: white;  
-    padding: 8px 43px;
+    padding: 8px 33px;
     border: none;
 }
 
-.tm-btn-small { padding: 8px 33px; }
+.tm-btn-small { padding: 8px 23px; }
 
 .tm-btn-primary:hover {
     background-color: #09b6b6;
