@@ -1,4 +1,31 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{# {{ form_widget(form) }} #}
+<div class="col-sm-9">
+	{{ form_widget(form.img, {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div><br>
+<div class="col-sm-9">
+	{{ form_widget(form.mensaje, {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div><br>
+<div class="col-sm-9">
+	{{ form_widget(form.title, {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div><br>
+<div class="col-sm-9">
+	{{ form_widget(form.description, {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div><br>
+<div class="col-sm-9">
+	{{ form_widget(form.title2, {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div><br>
+<div class="col-sm-9">
+	{{ form_widget(form.date, {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div><br>
+<div class="col-sm-9">
+	{{ form_widget(form.comments, {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div><br>
+<div class="col-sm-9">
+	{{ form_widget(form.createby , {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div><br>
+{# <div class="col-sm-9">
+	{{ form_widget(form.Categoria , {'attr': {'class': 'form-control mr-0 ml-auto'}}) }}
+</div><br> #}
+<button class="tm-btn tm-btn-primary tm-btn-small">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
