@@ -4,13 +4,15 @@ security:
             algorithm: auto
 
 
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: user
+                property: username
+        # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
@@ -22,6 +24,9 @@ security:
             provider: app_user_provider
             logout:
                 path: app_logout
+            guard:
+                authenticators:
+                    - App\Security\LoginAuthenticator
                 # where to redirect after logout
                 # target: app_any_route
 
