@@ -9,8 +9,15 @@
 				<div class="mb-3 mx-auto tm-site-logo">
 					<i class="fas fa-times fa-2x"></i>
 				</div>
-				<h1 class="text-center">Bienvenid@
-					{{ usuario }}</h1>
+				<h1 class="text-center">
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<div class="mb-3">
+							 Bienvenid@
+							{{ app.user.username }},
+							<a href="{{ path('app_logout') }}">Salir</a>
+						</div>
+					{% endif %}{# Bienvenid@ {{ usuario }} #}</h1>
+
 			</div>
 			<nav class="tm-nav" id="tm-nav">
 				<ul>
@@ -40,8 +47,8 @@
 						<a href="{{ path('contact') }}" class="tm-nav-link {{ page=='contact' ? 'active' : ''}}">
 							<i class="far fa-comments"></i>Contacta</a>
 					</li>
-						<li class="tm-nav-item">
-						<a href="{{ path('app_login') }}" class="tm-nav-link {{ page=='app_login' ? 'active' : ''}}">
+					<li class="tm-nav-item">
+						<a href="{{ path('admin') }}" class="tm-nav-link {{ page=='admin' ? 'active' : ''}}">
 							<i class="far fa-comments"></i>Admin</a>
 					</li>
 				</ul>
