@@ -15,6 +15,7 @@ class AdminController extends AbstractController
      */
     public function index(Request $request, SessionInterface $session,CategoriaRepository $categoriaRepository,ProductosRepository $productosRepository)
     {
+        $user = $this->getUser();
         $usuario = $request->request->get('usuario');
         $usuario = $session->get('usuario');
         return $this->render('admin.html.twig', [
@@ -22,6 +23,7 @@ class AdminController extends AbstractController
             'usuario' => strlen($usuario)>0?$usuario. " estas contectad@":"Introduce tus datos: ",
             'categorias' => $categoriaRepository->findAll(),
             'productos' => $productosRepository->findAll(),
+            'usuario'=> $user ->getUsername()
         ]);
     }
 }
